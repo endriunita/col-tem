@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problema 2</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #main-content{
+            margin-top: 10vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        form{
+            width: fit-content;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        input{
+            margin: 10px;
+            padding: 5px;
+        }
+
+        #help{
+            font-size: 12px;
+            color: lightslategrey;
+        }
+
+        #name_div{
+            margin-top: 25px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="main-content">
+    <form id="mario" onsubmit="return gobrrr()">
+        <div id="name_div">
+            <label for="name" >Nume</label>
+            <input id="name" type="text">*
+        </div>
+
+        <div id="date_div">
+            <label for="data">Data nasterii</label>
+            <input id="data" type="text" maxlength="10">*
+        </div>
+        <p id="help">Data trebuie scrisa in format DD/MM/AAAA</p>
+
+        <div id="age_div">
+            <label for="varsta">Varsta</label>
+            <input id="varsta" type="text">*
+        </div>
+
+        <div id="email_div">
+            <label for="email">Adresa de email</label>
+            <input id="email" type="text">*
+        </div>
+
+        <input type="submit" value="Trimite" >
+        <br>
+
+        <p id="eroare" style="color: red; display: none;">Datele sunt introduse gresit!</p>
+        <p id="succes" style="color: greenyellow; display: none;">Datele sunt introduse corect!</p>
+    </form>
+</div>
+
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

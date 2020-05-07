@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problema 3</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #main_content{
+            margin: 50px;
+        }
+
+        .row{
+            display: flex;
+        }
+
+        .cell{
+
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid black;
+            background-position: center;
+        }
+
+        #announcement{
+            color: green;
+            font-size: 30px;
+            display: none;
+        }
+
+        p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main_content">
+    <button onclick="startGame()">Ye want a challenge mate?</button>
+
+    <div id="tabla">
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    </div>
+
+    <p id="announcement">You have completed the game! Good job!</p>
+</div>
+
+
+<div id="checker" onchange=""></div>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
