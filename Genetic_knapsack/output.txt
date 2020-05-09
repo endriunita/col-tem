@@ -1,0 +1,136 @@
+Knapsack problem using genetic algorithm:
+I've implemented this after the Generational GA algorithm present in course 5. The algorithm has 3 parameters, if we're not taking the input file into consideration: population size,
+number of generations and the mutation probability.The starting population is generated directly valid. The selection of parents consists in taking two random parents from the "old"
+generation and creating two offsprings with random index, single-point crossover, after which I applied weak mutation that uses the mutation probability parameter.
+Because my starting population was generated valid, I'm not periodically checking the fitness of each solution, so after generating the offspring ( 2 at a time) (crossover + mutation)
+I need to check their validity. If any of the offspring is not valid I turn the set bits one by one into 0s starting from left to right( I tried selecting random indexes and checking
+if they're set, after which I would turn them to 0, but for some reason it was taking too long to compile so I gave up). After validating the offspring I introduce them into the new
+population, until the new population becomes as big as the old one. Due to the fact that I did not take the "keep invalid solutions" approach, I thought that keeping survivors was not
+necessary, so no parents survive.
+
+I have the table with the data below. One thing I've noticed when I was changing parameters was that the higher the generation count goes, the lower the average fitness is going to be,
+but the maximum values tend to be either higher, or consistently higher.
+
+note: input.txt is the file with 20 objects, input200.txt is the file with 200.
+
+File                    Population count        Generation count       Mutation prob.           Avg fitness             Maximum fitness
+input.txt                   100                       5                    0.01                   576.2                  594
+input.txt                   100                       5                    0.01                   615.0                  658
+input.txt                   100                       5                    0.01                   578.4                  589
+input.txt                   100                       5                    0.01                   578.8                  624
+input.txt                   100                       5                    0.01                   596.8                  662
+input.txt                   100                       5                    0.01                   592.2                  632
+input.txt                   100                       5                    0.01                   614.6                  679
+input.txt                   100                       5                    0.01                   607.0                  628
+input.txt                   100                       5                    0.01                   605.0                  628
+input.txt                   100                       5                    0.01                   583.6                  624
+input.txt                   100                       50                    0.01                   518.42                  633
+input.txt                   100                       50                    0.01                   536.28                  640
+input.txt                   100                       50                    0.01                   535.62                  626
+input.txt                   100                       50                    0.01                   513.0                  609
+input.txt                   100                       50                    0.01                   544.1                  628
+input.txt                   100                       50                    0.01                   564.34                  683
+input.txt                   100                       50                    0.01                   503.28                  652
+input.txt                   100                       50                    0.01                   545.94                  625
+input.txt                   100                       50                    0.01                   522.88                  604
+input.txt                   100                       50                    0.01                   518.58                  625
+input.txt                   100                       500                    0.01                   344.484                  592
+input.txt                   100                       500                    0.01                   395.532                  641
+input.txt                   100                       500                    0.01                   483.024                  670
+input.txt                   100                       500                    0.01                   469.78                  674
+input.txt                   100                       500                    0.01                   498.502                  628
+input.txt                   100                       500                    0.01                   492.446                  631
+input.txt                   100                       500                    0.01                   441.384                  621
+input.txt                   100                       500                    0.01                   395.272                  648
+input.txt                   100                       500                    0.01                   484.348                  659
+input.txt                   100                       500                    0.01                   473.664                  635
+input.txt                   100                       5                    0.2                   600.8                  621
+input.txt                   100                       5                    0.2                   568.6                  590
+input.txt                   100                       5                    0.2                   596.6                  639
+input.txt                   100                       5                    0.2                   608.2                  625
+input.txt                   100                       5                    0.2                   612.4                  680
+input.txt                   100                       5                    0.2                   636.4                  683
+input.txt                   100                       5                    0.2                   612.8                  661
+input.txt                   100                       5                    0.2                   601.4                  629
+input.txt                   100                       5                    0.2                   589.2                  630
+input.txt                   100                       5                    0.2                   590.0                  669
+input.txt                   100                       50                    0.2                   564.74                  620
+input.txt                   100                       50                    0.2                   532.16                  631
+input.txt                   100                       50                    0.2                   556.6                  662
+input.txt                   100                       50                    0.2                   587.24                  656
+input.txt                   100                       50                    0.2                   542.52                  626
+input.txt                   100                       50                    0.2                   562.08                  688
+input.txt                   100                       50                    0.2                   574.76                  677
+input.txt                   100                       50                    0.2                   533.94                  609
+input.txt                   100                       50                    0.2                   565.78                  683
+input.txt                   100                       50                    0.2                   552.9                  630
+input.txt                   100                       500                    0.2                   552.254                  679
+input.txt                   100                       500                    0.2                   534.906                  657
+input.txt                   100                       500                    0.2                   560.812                  693
+input.txt                   100                       500                    0.2                   559.812                  671
+input.txt                   100                       500                    0.2                   538.54                  657
+input.txt                   100                       500                    0.2                   554.306                  657
+input.txt                   100                       500                    0.2                   565.486                  698
+input.txt                   100                       500                    0.2                   543.232                  644
+input.txt                   100                       500                    0.2                   549.3                  705
+input.txt                   100                       500                    0.2                   546.342                  683
+input200.txt                   100                       5                    0.01                   131975.2                  132241
+input200.txt                   100                       5                    0.01                   132317.2                  132837
+input200.txt                   100                       5                    0.01                   131942.0                  132325
+input200.txt                   100                       5                    0.01                   131855.8                  132351
+input200.txt                   100                       5                    0.01                   131795.8                  131963
+input200.txt                   100                       5                    0.01                   131783.8                  132296
+input200.txt                   100                       5                    0.01                   132112.4                  133234
+input200.txt                   100                       5                    0.01                   132319.6                  132609
+input200.txt                   100                       5                    0.01                   131754.6                  132153
+input200.txt                   100                       5                    0.01                   131867.0                  132442
+input200.txt                   100                       50                    0.01                   131140.88                  132744
+input200.txt                   100                       50                    0.01                   130895.68                  132115
+input200.txt                   100                       50                    0.01                   131085.62                  132767
+input200.txt                   100                       50                    0.01                   131038.28                  132791
+input200.txt                   100                       50                    0.01                   131415.56                  132274
+input200.txt                   100                       50                    0.01                   131201.8                  132575
+input200.txt                   100                       50                    0.01                   131557.64                  132708
+input200.txt                   100                       50                    0.01                   130701.04                  132459
+input200.txt                   100                       50                    0.01                   130680.48                  132770
+input200.txt                   100                       50                    0.01                   130085.44                  132928
+input200.txt                   100                       500                    0.01                   122081.142                  132627
+input200.txt                   100                       500                    0.01                   115955.624                  132387
+input200.txt                   100                       500                    0.01                   112871.616                  132574
+input200.txt                   100                       500                    0.01                   115760.638                  132547
+input200.txt                   100                       500                    0.01                   114668.226                  132631
+input200.txt                   100                       500                    0.01                   127229.848                  133391
+input200.txt                   100                       500                    0.01                   119923.734                  132648
+input200.txt                   100                       500                    0.01                   119704.642                  132994
+input200.txt                   100                       500                    0.01                   116827.244                  133225
+input200.txt                   100                       500                    0.01                   112069.44                  133295
+input200.txt                   100                       5                    0.2                   131977.6                  132407
+input200.txt                   100                       5                    0.2                   131630.0                  131846
+input200.txt                   100                       5                    0.2                   131986.8                  132510
+input200.txt                   100                       5                    0.2                   132704.4                  133594
+input200.txt                   100                       5                    0.2                   132346.8                  132878
+input200.txt                   100                       5                    0.2                   131979.8                  132160
+input200.txt                   100                       5                    0.2                   131507.6                  131809
+input200.txt                   100                       5                    0.2                   132464.4                  133195
+input200.txt                   100                       5                    0.2                   131857.6                  132489
+input200.txt                   100                       5                    0.2                   132499.4                  132924
+input200.txt                   100                       50                    0.2                   131153.34                  132812
+input200.txt                   100                       50                    0.2                   131381.56                  132816
+input200.txt                   100                       50                    0.2                   131895.86                  132803
+input200.txt                   100                       50                    0.2                   131559.64                  132916
+input200.txt                   100                       50                    0.2                   131381.98                  132786
+input200.txt                   100                       50                    0.2                   130895.12                  132780
+input200.txt                   100                       50                    0.2                   131252.78                  132411
+input200.txt                   100                       50                    0.2                   131344.22                  132658
+input200.txt                   100                       50                    0.2                   130828.36                  132808
+input200.txt                   100                       50                    0.2                   131197.86                  132759
+input200.txt                   100                       500                    0.2                   129368.842                  132630
+input200.txt                   100                       500                    0.2                   124997.344                  133038
+input200.txt                   100                       500                    0.2                   129810.67                  132928
+input200.txt                   100                       500                    0.2                   129296.65                  132673
+input200.txt                   100                       500                    0.2                   126775.774                  132705
+input200.txt                   100                       500                    0.2                   130278.118                  132820
+input200.txt                   100                       500                    0.2                   126372.7                  132674
+input200.txt                   100                       500                    0.2                   128388.914                  132533
+input200.txt                   100                       500                    0.2                   127273.572                  132547
+input200.txt                   100                       500                    0.2                   128964.384                  132985
